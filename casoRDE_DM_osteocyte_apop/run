@@ -1,0 +1,56 @@
+#!/bin/sh
+
+# Copy initial timestep
+cp -r 0.org 0
+cp -r 0.org internal/0
+
+# Run from E13.5 to E15.5 (0 to 172800) 
+cp ./system/controlDict_1 ./system/controlDict
+RDE_DM_osteocyte_apop >> log.RDE_DM_osteocyte_apop 2>&1
+
+if grep -q "Floating point exception (core dumped)" "log.RDE_DM_osteocyte_apop"; then
+	echo "Floating point errors occured"
+	exit 1
+fi
+
+cp -r 172800 ./internal/
+
+# Apply new boundary condition (displacement from E15.5 to E17.5)
+cp ./system/mapFieldsDict_1 ./system/mapFieldsDict
+mapFields ./new_bc_1/
+
+cp ./system/mapFieldsDict_2 ./system/mapFieldsDict
+mapFields ./internal/
+
+# Run from E15.5 to E17.5 (172800 to 345600)
+cp ./system/controlDict_2 ./system/controlDict
+RDE_DM_osteocyte_apop >> log.RDE_DM_osteocyte_apop 2>&1
+
+if grep -q "Floating point exception (core dumped)" "log.RDE_DM_osteocyte_apop"; then
+	echo "Floating point errors occured"
+	exit 1
+fi
+
+cp -r 345600 ./internal/
+
+# Apply new boundary condition (displacement from E17.5 to P0)
+cp ./system/mapFieldsDict_1 ./system/mapFieldsDict
+mapFields ./new_bc_2/
+
+cp ./system/mapFieldsDict_2 ./system/mapFieldsDict
+mapFields ./internal/
+
+
+# Run from E17.5 to P0 (345600 to 518400)
+cp ./system/controlDict_3 ./system/controlDict
+RDE_DM_osteocyte_apop >> log.RDE_DM_osteocyte_apop 2>&1
+
+if grep -q "Floating point exception (core dumped)" "log.RDE_DM_osteocyte_apop"; then
+	echo "Floating point errors occured"
+	exit 1
+fi
+
+cp -r 518400 ./internal/
+
+
+

@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -N aho
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=24:00:00
+#PBS -l pmem=1gb
+#PBS -j oe
+#PBS -m abe 
+#PBA -M lcys0914@gmail.com
+
+cd $PBS_O_WORKDIR
+
+
+module load foam/3.1
+fe31
+
+echo " "
+echo " "
+echo "Job started on `hostname` at `date`"
+
+./run
+
+echo " "
+echo "Job Ended at `date`"
+echo " "
+

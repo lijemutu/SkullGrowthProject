@@ -1,0 +1,245 @@
+#!/bin/bash
+
+#for alphah in $(seq 0.0000000004 0.0000000004 0.0000000036 )
+
+#do
+
+#cp constant/transportProperties.ori constant/transportProperties
+
+#alphahh=$(./sciNot $alphah);
+
+#sed -i '/alpha_h/s/2e-9/'"$alphahh"'/g' constant/transportProperties 
+
+#./run >> alogs 2>&1
+#checkMesh -latestTime >> alogs 2>&1
+#foamToVTK -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+#foamLog log.RDE_DM_osteocyte_apop >> alogs 2>&1
+
+#rm -r VTK/allPatches/
+#cp constant/transportProperties VTK/
+
+#cp log.RDE_DM_osteocyte_apop VTK/
+
+#mv logs VTK/
+#mv VTK Osteocyte_apoptosis_alphah"$alphahh"
+#foamToVTK -faceSet nonOrthoFaces -time 518400 >> alogs 2>&1
+#mv VTK/* Osteocyte_apoptosis_alphah"$alphahh"
+
+
+#echo "$(date) alphah"$alphahh""
+
+#./clean  >> alogs 2>&1
+
+#done 
+
+#######################################################################################################################
+#######################################################################################################################
+####################################################################################################################### 
+#for gammah in $(seq 0.05 0.05 0.45 )
+
+#do
+
+#cp constant/transportProperties.ori constant/transportProperties
+
+#gammahh=$(./sciNot $gammahh);
+
+#sed -i '/gamma_h/s/2.5e-1/'"$gammah"'/g' constant/transportProperties 
+
+#./run >> alogs 2>&1
+#checkMesh -latestTime >> alogs 2>&1
+#foamToVTK -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+#foamLog log.RDE_DM_osteocyte_apop >> alogs 2>&1
+
+#rm -r VTK/allPatches/
+#cp constant/transportProperties VTK/
+
+#cp log.RDE_DM_osteocyte_apop VTK/
+
+#mv logs VTK/
+#mv VTK Osteocyte_apoptosis_gammah"$gammah"
+#foamToVTK -faceSet nonOrthoFaces -time 518400 >> alogs 2>&1
+#mv VTK/* Osteocyte_apoptosis_gammah"$gammah"
+
+
+#echo "$(date) gammah"$gammah""
+
+#./clean  >> alogs 2>&1
+
+#done 
+
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
+
+#for alphao in $(seq 80 80 720)
+
+#do
+
+#cp constant/transportProperties.ori constant/transportProperties
+
+#alphaoo=$(./sciNot $alphao);
+
+#sed -i '/alpha_o/s/4e2/'"$alphaoo"'/g' constant/transportProperties 
+
+#./run >> alogs 2>&1
+#checkMesh -latestTime >> alogs 2>&1
+#foamToVTK -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+#foamLog log.RDE_DM_osteocyte_apop >> alogs 2>&1
+#rm -r VTK/allPatches/
+#cp constant/transportProperties VTK/
+#cp log.RDE_DM_osteocyte_apop VTK/
+#mv VTK Osteocyte_apoptosis_alphao"$alphaoo"
+#foamToVTK -faceSet nonOrthoFaces -time 518400 >> alogs 2>&1
+#mv VTK/* Osteocyte_apoptosis_alphao"$alphaoo"
+#echo "$(date) alphao"$alphaoo""
+
+#./clean  >> alogs 2>&1
+
+#done 
+
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
+
+
+#for dh in $(seq 0.00000000003 0.00000000003 0.00000000027)
+
+#do
+
+#cp constant/transportProperties.ori constant/transportProperties
+
+#dhh=$(./sciNot $dh);
+
+#sed -i '/Dh/s/1.5e-10/'"$dhh"'/g' constant/transportProperties 
+#sed -i '/eta/s/1e-7/2e-7/g' constant/transportProperties 
+
+#./run >> alogs 2>&1
+#checkMesh -latestTime >> alogs 2>&1
+#foamToVTK -latestTime -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+#foamLog log.RDE_DM_osteocyte_apop >> alogs 2>&1
+#rm -r VTK/allPatches/
+#cp log.RDE_DM_osteocyte_apop VTK/
+#cp constant/transportProperties VTK/
+#mv logs VTK/
+#mv VTK/ Osteocyte_apoptosis_dh"$dhh"/
+
+#foamToVTK -faceSet nonOrthoFaces -time 518400 >> alogs 2>&1
+#mv VTK/* Osteocyte_apoptosis_dh"$dhh"/
+#cp constant/transportProperties Osteocyte_apoptosis_etaap_con_craneosinostosis_2e-7etaGRAPH"$etaapp"/ 
+#mv Osteocyte_apoptosis_etaap_con_craneosinostosis_2e-7etaGRAPH"$etaapp"/  /media/erick/Erick\ Lopez\ Fisica/RDEchanged/corrected/
+
+
+#echo "$(date) dh"$dhh""
+
+#./clean  >> alogs 2>&1
+
+#done 
+
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
+for eta in $(seq 0.00000004 0.00000004 0.00000036)
+
+do
+
+cp constant/transportProperties.ori constant/transportProperties
+
+etaa=$(./sciNot $eta);
+
+sed -i '/eta/s/2e-7/'"$etaa"'/g' constant/transportProperties 
+
+./run >> alogs 2>&1
+checkMesh -latestTime >> alogs 2>&1
+foamToVTK -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+foamLog log.RDE_DM_osteocyte_apop >> alogs 2>&1
+rm -r VTK/allPatches/
+cp log.RDE_DM_osteocyte_apop VTK/
+cp constant/transportProperties VTK/
+mv logs VTK/
+mv VTK/ Osteocyte_apoptosis_eta"$etaa"/
+foamToVTK -faceSet nonOrthoFaces -time 518400 >> alogs 2>&1
+mv VTK/* Osteocyte_apoptosis_eta"$etaa"/
+mv Osteocyte_apoptosis_eta"$etaa"/  /media/erick/Erick\ Lopez\ Fisica/RDEchanged/
+
+echo "$(date) eta"$etaa""
+
+./clean  >> alogs 2>&1
+
+done 
+
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
+
+
+#for betah in $(seq 0.00004 0.00004 0.00036) 
+
+#do
+
+#cp constant/transportProperties.ori constant/transportProperties
+
+#betahh=$(./sciNot $betah);
+
+#sed -i '/beta_h/s/2e-4/'"$betahh"'/g' constant/transportProperties 
+
+#./run >> alogs 2>&1
+#checkMesh -latestTime >> alogs 2>&1
+#foamToVTK -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+#foamLog log.RDE_DM_osteocyte_apop >> alogs 2>&1
+#rm -r VTK/allPatches/
+#cp log.RDE_DM_osteocyte_apop VTK/
+#cp constant/transportProperties VTK/
+#mv logs VTK/
+#mv VTK/ Osteocyte_apoptosis_betah"$betahh"/
+#foamToVTK -faceSet nonOrthoFaces -time 518400 >> alogs 2>&1
+#mv VTK/* Osteocyte_apoptosis_betah"$betahh"/
+#mv Osteocyte_apoptosis_eta"$etaa"/  /media/erick/Erick\ Lopez\ Fisica/RDEchanged/
+
+#echo "$(date) betah"$betahh""
+
+#./clean  >> alogs 2>&1
+
+#done 
+
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
+
+#for etaap in $(seq 0.00000001 0.00000001 0.00000009)
+
+#do
+
+#cp constant/transportProperties.ori constant/transportProperties
+
+#etaaap=$(./sciNot $etaap);
+
+#sed -i '/etaap/s/5e-8/'"$etaaap"'/g' constant/transportProperties 
+
+#./run >> alogs 2>&1
+#checkMesh -latestTime >> alogs 2>&1
+#foamToVTK -allPatches -fields "(a h o ocy b)" >> alogs 2>&1
+#foamLog log.RDE_DM_osteocyte_apop >> alogs 2>&1
+#rm -r VTK/allPatches/
+#cp log.RDE_DM_osteocyte_apop VTK/
+#cp constant/transportProperties VTK/
+#mv logs VTK/
+#mv VTK/ Osteocyte_apoptosis_etaap"$etaaap"/
+#foamToVTK -faceSet nonOrthoFaces -time 518400 >> alogs 2>&1
+#mv VTK/* Osteocyte_apoptosis_etaap"$etaaap"/
+#mv Osteocyte_apoptosis_eta"$etaa"/  /media/erick/Erick\ Lopez\ Fisica/RDEchanged/
+
+#echo "$(date) etaap"$etaaap""
+
+#./clean  >> alogs 2>&1
+
+#done 
+
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
