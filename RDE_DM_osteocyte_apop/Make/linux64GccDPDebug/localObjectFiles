@@ -1,0 +1,2 @@
+LOCAL_OBJECTS = \
+RDE_DM_osteocyte_apop.o
